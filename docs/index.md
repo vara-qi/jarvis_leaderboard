@@ -1,9 +1,5 @@
-[LICENSE]: https://github.com/usnistgov/jarvis/blob/master/LICENSE.rst
-<!--
-<div class="menu-logo">
-    <img src="https://www.ctcms.nist.gov/~knc6/static/JARVIS-DFT/images/nist-logo.jpg" alt="" width="100" height="auto"/>
-</div>
--->
+[LICENSE]: https://github.com/atomgptlab/jarvis/blob/master/LICENSE.rst
+
 
 <style>
 * {
@@ -167,11 +163,11 @@ Typically, codes are kept in platforms like GitHub/GitLab, and data is stored in
 In addition to prediction results, we aim to capture the underlying software, hardware, and instrumental frameworks to enhance reproducibility. This project is a part of the [NIST-JARVIS](https://jarvis.nist.gov) infrastructure.
 As a minimum check, we test rebuilding of the leaderboard and installations of software using GitHub actions.
 
-![Leaderboard actions](https://github.com/usnistgov/jarvis_leaderboard/actions/workflows/test_build.yml/badge.svg)
-![Leaderboard AI installation actions](https://github.com/usnistgov/jarvis_leaderboard/actions/workflows/install_ai.yml/badge.svg)
-![Leaderboard ES installation actions](https://github.com/usnistgov/jarvis_leaderboard/actions/workflows/install_es.yml/badge.svg)
-![Leaderboard FF installation actions](https://github.com/usnistgov/jarvis_leaderboard/actions/workflows/install_ff.yml/badge.svg)
-![Leaderboard QC installation actions](https://github.com/usnistgov/jarvis_leaderboard/actions/workflows/install_qc.yml/badge.svg)
+![Leaderboard actions](https://github.com/atomgptlab/jarvis_leaderboard/actions/workflows/test_build.yml/badge.svg)
+![Leaderboard AI installation actions](https://github.com/atomgptlab/jarvis_leaderboard/actions/workflows/install_ai.yml/badge.svg)
+![Leaderboard ES installation actions](https://github.com/atomgptlab/jarvis_leaderboard/actions/workflows/install_es.yml/badge.svg)
+![Leaderboard FF installation actions](https://github.com/atomgptlab/jarvis_leaderboard/actions/workflows/install_ff.yml/badge.svg)
+![Leaderboard QC installation actions](https://github.com/atomgptlab/jarvis_leaderboard/actions/workflows/install_qc.yml/badge.svg)
 
 
 <!--number_of_benchmarks--> - Number of benchmarks: 320
@@ -213,7 +209,7 @@ Click on the entries in the Benchmark column. You'll be able to see performance 
 <a name="help"></a>
 # Help
 
-   If you have a question/suggestion, raise a [GitHub issue](https://github.com/usnistgov/jarvis_leaderboard/issues) or submit a [Google form](https://forms.gle/giDEnfNmkaU5BhBw9) request.
+   If you have a question/suggestion, raise a [GitHub issue](https://github.com/atomgptlab/jarvis_leaderboard/issues) or submit a [Google form](https://forms.gle/giDEnfNmkaU5BhBw9) request.
 
 
 <a name="license"></a>
