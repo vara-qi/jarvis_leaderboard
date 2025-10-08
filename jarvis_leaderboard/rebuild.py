@@ -199,7 +199,7 @@ def make_summary_table():
             n_users = []
             try:
                 rq = requests.get(
-                    "https://api.github.com/repos/usnistgov/jarvis_leaderboard/contributors"
+                    "https://api.github.com/repos/atomgptlab/jarvis_leaderboard/contributors"
                 ).json()
                 for u in rq:
                     if u["login"] not in ["dependabot[bot]"]:
@@ -209,7 +209,7 @@ def make_summary_table():
                 pass
 
             temp = (
-                '<h3>Contribution Guide</h3><p>Contributors: <a href="https://github.com/usnistgov/jarvis_leaderboard/graphs/contributors" >'
+                '<h3>Contribution Guide</h3><p>Contributors: <a href="https://github.com/atomgptlab/jarvis_leaderboard/graphs/contributors" >'
                 + str(len(n_users))
                 + "</a></p>"
             )
@@ -274,7 +274,7 @@ def get_metric_value(
     results["project_url"] = meta_data["project_url"]
     results["num_entries"] = len(csv_data)
     results["github_url"] = (
-        "https://github.com/usnistgov/jarvis_leaderboard/tree/main/jarvis_leaderboard/contributions/"
+        "https://github.com/atomgptlab/jarvis_leaderboard/tree/main/jarvis_leaderboard/contributions/"
         + contribution
     )  # meta_path.split('metadata.json')[0]
 
@@ -795,8 +795,8 @@ def get_metric_value_old(
     results["project_url"] = meta_data["project_url"]
     results["num_entries"] = len(csv_data)
     results["github_url"] = (
-        "https://github.com/usnistgov/jarvis_leaderboard/tree/main/jarvis_leaderboard/contributions/"
-        # "https://github.com/usnistgov/jarvis_leaderboard/tree/main/jarvis_leaderboard/benchmarks/"
+        "https://github.com/atomgptlab/jarvis_leaderboard/tree/main/jarvis_leaderboard/contributions/"
+        # "https://github.com/atomgptlab/jarvis_leaderboard/tree/main/jarvis_leaderboard/benchmarks/"
         + bench_name
     )  # meta_path.split('metadata.json')[0]
 
@@ -902,7 +902,7 @@ def rebuild_pages(
     os.chdir(root_dir + "/..")
     num_data = 0
     for i in glob.glob("jarvis_leaderboard/contributions/*/*.csv.zip"):
-      if 'AtomGen' in i:
+        #if 'AtomGen' in i:
         bnch_tmp = i.split("/")[-1]
         if bnch_tmp not in exclude_benchs:
             # for i in glob.glob("jarvis_leaderboard/benchmarks/*/*.csv.zip"):
@@ -1017,7 +1017,7 @@ def rebuild_pages(
             notes = ""
             notes = (
                 '<a href="'
-                + "https://github.com/usnistgov/jarvis_leaderboard/tree/main/"
+                + "https://github.com/atomgptlab/jarvis_leaderboard/tree/main/"
                 + i
                 + '" target="_blank">CSV</a>'
             )
@@ -1026,14 +1026,14 @@ def rebuild_pages(
             # json_path = method + "/" + submod + "/" + json_name
             json_url = (
                 '<a href="'
-                + "https://github.com/usnistgov/jarvis_leaderboard/tree/main/jarvis_leaderboard/benchmarks/"
-                # + "https://github.com/usnistgov/jarvis_leaderboard/tree/main/jarvis_leaderboard/dataset/"
+                + "https://github.com/atomgptlab/jarvis_leaderboard/tree/main/jarvis_leaderboard/benchmarks/"
+                # + "https://github.com/atomgptlab/jarvis_leaderboard/tree/main/jarvis_leaderboard/dataset/"
                 + json_path
                 + '" target="_blank">JSON</a>'
             )
             metadata = (
                 '<a href="'
-                + "https://github.com/usnistgov/jarvis_leaderboard/tree/main/"
+                + "https://github.com/atomgptlab/jarvis_leaderboard/tree/main/"
                 + "jarvis_leaderboard/contributions/"
                 # + "jarvis_leaderboard/benchmarks/"
                 + bench_name
@@ -1042,7 +1042,7 @@ def rebuild_pages(
             )
             runsh = (
                 '<a href="'
-                + "https://github.com/usnistgov/jarvis_leaderboard/tree/main/"
+                + "https://github.com/atomgptlab/jarvis_leaderboard/tree/main/"
                 + "jarvis_leaderboard/contributions/"
                 # + "jarvis_leaderboard/benchmarks/"
                 + bench_name
@@ -1533,7 +1533,7 @@ def rebuild_pages(
                     + "["
                     + str(n_methods)
                     + "]"
-                    + "(https://github.com/usnistgov/jarvis_leaderboard/tree/main/jarvis_leaderboard/contributions)"
+                    + "(https://github.com/atomgptlab/jarvis_leaderboard/tree/main/jarvis_leaderboard/contributions)"
                     # + str(n_methods)
                     # + str(len(dat))
                     # + "\n"
@@ -1551,7 +1551,7 @@ def rebuild_pages(
                 n_users = []
                 try:
                     rq = requests.get(
-                        "https://api.github.com/repos/usnistgov/jarvis_leaderboard/contributors"
+                        "https://api.github.com/repos/atomgptlab/jarvis_leaderboard/contributors"
                     ).json()
                     for u in rq:
                         if u["login"] not in ["dependabot[bot]"]:
@@ -1565,7 +1565,7 @@ def rebuild_pages(
                     + "["
                     + str(len(n_users))
                     + "]"
-                    + "(https://github.com/usnistgov/jarvis_leaderboard/graphs/contributors)"
+                    + "(https://github.com/atomgptlab/jarvis_leaderboard/graphs/contributors)"
                     # + str(len(dat))
                     # + "\n"
                 )
