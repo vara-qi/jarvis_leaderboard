@@ -243,6 +243,7 @@ def get_metric_value(
     plot_filename=None,
     metric=None,
 ):
+    print("csv path is: ",csv_path)
     fname = csv_path.split("/")[-1].split(".csv.zip")[0]
     contribution = csv_path.split("/")[-2]
     temp = fname.split("-")
@@ -321,8 +322,9 @@ def get_metric_value(
         errors.append([csv_path, len(csv_data), len(actual_df)])
 
     df = pd.merge(csv_data, actual_df, on="id")
-    # print('csv',csv_path)
-    # print ('df',df)
+    print("csv", csv_path)
+    print("df", df)
+    print("actual_df", actual_df)
     # print('csv_data',csv_data)
     # print('actual_df',actual_df)
     results["res"] = "na"
@@ -461,35 +463,29 @@ def get_metric_value(
         results["res"] = round(scores, 4)
         print("rouge scores", scores)
     if metric == "rmse" and subcat == "AtomGen":
-        print("AtomGen")
-        from pymatgen.analysis.structure_matcher import StructureMatcher
-
-        matcher = StructureMatcher(stol=0.5, angle_tol=10, ltol=0.3)
+        print("AtomGen", df)
+        #from pymatgen.analysis.structure_matcher import StructureMatcher
+        #matcher = StructureMatcher(stol=0.5, angle_tol=10, ltol=0.3)
         rms = []
         for m, mm in df.iterrows():
-            try:
-                atoms_target = (
-                    Poscar.from_string(
-                        (mm["actual"].replace("\\n", "\n"))
-                    ).atoms
-                ).pymatgen_converter()
-                atoms_pred = (
-                    Poscar.from_string(
-                        (mm["prediction"].replace("\\n", "\n"))
-                    ).atoms
-                ).pymatgen_converter()
-                # rms_dist = matcher.get_rms_dist(atoms_pred,atoms_target)
-                rms_dist = matcher.get_rms_anonymous(atoms_pred, atoms_target)
-                if rms_dist[0] is not None:
-                    rms.append(rms_dist[0])
-            except Exception as exp:
-                print("exp", exp)
-                pass
-        try:
-            rms = round(np.array(rms).mean(), 4)
-        except:
-            rms = -9999
-            pass
+            atoms_target = Poscar.from_string(
+                (mm["actual"].replace("\\n", "\n"))
+            ).atoms
+            atoms_pred = Poscar.from_string(
+                (mm["prediction"].replace("\\n", "\n"))
+            ).atoms
+            #print("atoms_target", atoms_target)
+            #print("atoms_pred", atoms_pred)
+            #rms_dist = matcher.get_rms_dist(atoms_pred.pymatgen_converter(),atoms_target.pymatgen_converter())
+            rms_dist = np.abs(
+                atoms_target.lattice.abc[0] - atoms_pred.lattice.abc[0]
+            #    #atoms_target.volume - atoms_pred.volume
+            )  # matcher.get_rms_anonymous(atoms_pred, atoms_target)
+            #print('rms_dist',rms_dist)
+            #if rms_dist[0] is not None:
+            #   rms.append(rms_dist)
+            rms.append(rms_dist)
+        rms = round(np.array(rms).mean(), 4)
         results["res"] = rms
         # import sys
         # sys.exit()
@@ -681,8 +677,7 @@ def get_results(
         results = []
     # for i in glob.glob("../contributions/*/AI-MLFF-forces-mlearn_Si-test-multimae.csv.zip"):
     for i in glob.glob(search):
-        # print(i)
-        res = get_metric_value(csv_path=i,metric=metric)
+        res = get_metric_value(csv_path=i, metric=metric)
         # print (res['res'],res['random_guessing_performance'])
         if include_random:
             rand = res["random_guessing_performance"]
@@ -907,6 +902,7 @@ def rebuild_pages(
     os.chdir(root_dir + "/..")
     num_data = 0
     for i in glob.glob("jarvis_leaderboard/contributions/*/*.csv.zip"):
+      if 'AtomGen' in i:
         bnch_tmp = i.split("/")[-1]
         if bnch_tmp not in exclude_benchs:
             # for i in glob.glob("jarvis_leaderboard/benchmarks/*/*.csv.zip"):
@@ -969,6 +965,7 @@ def rebuild_pages(
     dat = []
     md_files = []
     for i in glob.glob("jarvis_leaderboard/contributions/*/*.csv.zip"):
+      if 'AtomGen' in i:
         bnch_tmp = i.split("/")[-1]
         if bnch_tmp not in exclude_benchs:
             # for i in glob.glob("jarvis_leaderboard/benchmarks/*/*.csv.zip"):

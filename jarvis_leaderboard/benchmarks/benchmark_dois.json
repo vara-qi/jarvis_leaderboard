@@ -491,7 +491,10 @@
         },
         "AtomGen": {
             "dft_3d_Tc_supercon.json.zip": [
-                "https://doi.org/10.1021/acs.jpclett.3c01260"
+                "https://doi.org/10.1038/s41524-022-00933-1"
+            ],
+            "alex_supercon_Tc.json.zip": [
+                "https://doi.org/10.1002/adfm.202404043"
             ],
             "perov5_heat_ref.json.zip": [
                 "https://doi.org/10.1039/C2EE22341D"
