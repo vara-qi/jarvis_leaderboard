@@ -6,7 +6,7 @@
     "database_version": "12-12-2022",
     "team_name": "AtomGPTLab",
     "time_taken_seconds": {
-        "I-TextClass-test_quiz-mmlu-test-acc.csv.zip": ""
+        "AI-TextClass-test_quiz-mmlu-test-acc.csv.zip": ""
     },
     "language": "python",
     "os": "linux",
